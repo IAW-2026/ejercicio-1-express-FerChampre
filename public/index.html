@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio</title>
+</head>
+<body>
+    <h1>Bienvenido</h1>
+    <p>Por favor, ingresa tus datos:</p>
+    <form action="/contacto" method="POST">
+        <div>
+            <label for="nombre">Nombre:</label><br>
+            <input type="text" id="nombre" name="nombre" required>
+        </div>
+        <br>
+        <div>
+            <label for="mensaje">Mensaje:</label><br>
+            <textarea id="mensaje" name="mensaje" required></textarea>
+        </div>
+        <br>
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>
