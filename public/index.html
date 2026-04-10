@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generador de Frases Aleatorias</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f4f4f4;
+    }
+    .container {
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 500px;
+      width: 90%;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-bottom: 20px;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    #resultado {
+      font-size: 18px;
+      color: #333;
+      font-style: italic;
+      min-height: 50px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Frases Aleatorias</h1>
+    <button id="btnFrase">Obtener frase</button>
+    <div id="resultado">La frase aparecerá aquí...</div>
+  </div>
+
+  <script>
+    const btnFrase = document.getElementById('btnFrase');
+    const resultado = document.getElementById('resultado');
+
+    btnFrase.addEventListener('click', () => {
+      // Hacemos el fetch (petición GET) a la ruta "/frase"
+      fetch('/frase')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Error en la red');
+          }
+          return response.json(); // Transformamos la respuesta en un objeto JavaScript
+        })
+        .then(data => {
+          // Extraemos la propiedad 'frase' del JSON
+          resultado.textContent = `"${data.frase}"`;
+        })
+        .catch(error => {
+          console.error('Hubo un problema con la petición fetch:', error);
+          resultado.textContent = "Error al obtener la frase.";
+          resultado.style.color = "red";
+        });
+    });
+  </script>
+</body>
+</html>
