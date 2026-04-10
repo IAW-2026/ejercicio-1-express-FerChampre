@@ -5,9 +5,16 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Variable en memoria para contar las visitas a la ruta raíz
+let contadorVisitas = 0;
+
 // Ruta raíz
 app.get('/', (req, res) => {
-  res.send('Hola mundo!');
+  contadorVisitas++; // Incrementamos el contador por cada petición
+  res.send(`
+    <h1>Hola mundo!</h1>
+    <p>La ruta raíz (/) ha sido visitada: <strong>${contadorVisitas}</strong> veces desde que se inició el servidor.</p>
+  `);
 });
 
 // Middleware básico para manejo de errores
