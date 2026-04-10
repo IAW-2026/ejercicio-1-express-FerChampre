@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario de Contacto</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    form { display: flex; flex-direction: column; max-width: 300px; gap: 10px; margin-bottom: 20px; }
+    #resultado { font-weight: bold; color: green; }
+    .error { color: red; }
+  </style>
+</head>
+<body>
+  <h1>Contacto</h1>
+  
+  <form id="contactoForm">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" required>
+    
+    <label for="mensaje">Mensaje:</label>
+    <textarea id="mensaje" name="mensaje" required></textarea>
+    
+    <button type="submit">Enviar</button>
+  </form>
+
+  <p id="resultado"></p>
+
+  <script src="script.js"></script>
+</body>
+</html>
